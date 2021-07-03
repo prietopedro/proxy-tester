@@ -2,40 +2,168 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+button,
+h6 {
+  font-family: 'Poppins', sans-serif !important;
+}
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
 body {
   position: relative;
   color: white;
   height: 100vh;
-  background: linear-gradient(
-    200.96deg,
-    #fedc2a -29.09%,
-    #dd5789 51.77%,
-    #7a2c9e 129.35%
-  );
+  background: #01092d;
   font-family: sans-serif;
   overflow-y: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+.wrapper-main {
+  width: 100%;
+  height: 100%;
 }
 
-button {
+.wrapper-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 0.5px solid rgba(23, 111, 254, 1);
+  margin: 0.5rem 1rem;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+  background: rgb(1, 10, 53);
+  height: 34rem;
+}
+
+.button-wrapper {
+  margin: 1rem 2rem;
+}
+.button {
+  text-transform: uppercase;
   background-color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 6px 15px;
+  border-radius: 3px;
   border: none;
   appearance: none;
-  font-size: 1.3rem;
+  font-weight: 600;
   box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
     0px 18px 88px -4px rgba(24, 39, 75, 0.14);
   transition: transform ease-in 0.1s;
   cursor: pointer;
+  background: linear-gradient(
+    to right,
+    rgba(23, 111, 254, 1) 0%,
+    rgba(24, 173, 253, 1) 100%
+  );
+  color: white;
 }
 
-button:hover {
-  transform: scale(1.05);
+.button-heading {
+  padding: 10px 20px;
+  border-radius: 6px;
 }
 
+.heading-bar {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 10px;
+  background: linear-gradient(
+    to right,
+    rgba(23, 111, 254, 1) 0%,
+    rgba(24, 173, 253, 1) 100%
+  );
+}
+
+.select-menu {
+  display: none;
+  position: relative;
+  bottom: -15px;
+  right: 8px;
+  background-color: #000f48;
+  color: #50608b;
+  min-width: 13rem;
+  border-radius: 4px;
+  padding: 0px 0.5rem;
+}
+.select {
+  background-color: #000f48;
+  color: #65708f;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 0.5rem;
+  min-width: 12rem;
+  margin-right: 0.5rem;
+  font-weight: 700;
+}
+
+.select-input {
+  background-color: #000f48;
+  border: none;
+  color: #65708f;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.select-arrow {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  outline: none;
+  width: 1rem;
+}
+.select-option {
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 14px;
+}
+.select-option:hover {
+  background-color: #07195f;
+}
+.footer-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+}
+
+.footer-l {
+  display: flex;
+}
+.footer-c {
+  display: flex;
+  justify-content: center;
+}
+.footer-r {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.select-wrapper {
+  display: flex;
+  align-items: center;
+}
+.absolute {
+  width: 0;
+  height: 0;
+  position: absolute;
+}
 li {
   list-style: none;
 }
@@ -52,9 +180,10 @@ a:hover {
   text-decoration: none;
 }
 
-.Hello {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
 }

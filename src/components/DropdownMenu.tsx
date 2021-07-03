@@ -1,13 +1,15 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 
 interface Props {
   options: string[];
+  searchable?: boolean;
 }
 
-const DropdownMenu = ({ options }: Props) => {
+const DropdownMenu = ({ options, searchable }: Props) => {
   const [show, setShow] = useState(false);
   const [input, setInput] = useState(options[0]);
+  const [filteredOptions, setFilteredOptions] = useState<string[]>(options);
 
   const toggleMenu = () => {
     setShow(!show);
@@ -17,18 +19,38 @@ const DropdownMenu = ({ options }: Props) => {
     setInput(option);
     setShow(false);
   };
+
+  const onInputChange: React.ChangeEventHandler<HTMLInputElement> = (
+    event: ChangeEvent<HTMLInputElement>
+  ) => {
+    setInput(event.target.value);
+    setFilteredOptions(
+      options.filter((option) =>
+        option.toLowerCase().includes(event.target.value.toLowerCase())
+      )
+    );
+  };
+
+  // useEffect(() => {
+  //   setFilteredOptions(
+  //     options.filter((option) =>
+  //       option.toLowerCase().includes(input.toLowerCase())
+  //     )
+  //   );
+  // }, [input, option]);
+
   return (
     <>
       <div className="select">
         <div className="select-wrapper">
           <div className="absolute">
             <div className={`select-menu ${show ? 'show' : ''}`}>
-              {options.map((option: string) => (
+              {filteredOptions.map((option: string) => (
                 <div
                   key={option}
                   className="select-option"
                   onClick={() => onOptionClick(option)}
-                  onKeyUp={toggleMenu}
+                  onKeyUp={() => {}}
                   tabIndex={0}
                   role="menuitem"
                 >
@@ -37,13 +59,20 @@ const DropdownMenu = ({ options }: Props) => {
               ))}
             </div>
           </div>
-          <input className="select-input" value={input} />
+          <input
+            className="select-input"
+            value={input}
+            disabled={!searchable}
+            onChange={onInputChange}
+            onKeyUp={() => {}}
+            tabIndex={0}
+          />
           <div
             role="button"
             tabIndex={0}
             className={`select-arrow ${show ? 'hide' : ''}`}
             onClick={toggleMenu}
-            onKeyUp={toggleMenu}
+            onKeyUp={() => {}}
           >
             <FaAngleDown />
           </div>
@@ -52,7 +81,7 @@ const DropdownMenu = ({ options }: Props) => {
             tabIndex={0}
             className={`select-arrow ${!show ? 'hide' : ''}`}
             onClick={toggleMenu}
-            onKeyUp={toggleMenu}
+            onKeyUp={() => {}}
           >
             <FaAngleUp />
           </div>
@@ -60,6 +89,10 @@ const DropdownMenu = ({ options }: Props) => {
       </div>
     </>
   );
+};
+
+DropdownMenu.defaultProps = {
+  searchable: false,
 };
 
 export default DropdownMenu;

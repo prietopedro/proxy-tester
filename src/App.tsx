@@ -40,7 +40,7 @@ const Hello = () => {
         <div className="footer-bar">
           <div className="footer-test footer-child">
             <div className="footer-l">
-              <DropdownMenu options={['Adidas', 'Footlocker']} />
+              <DropdownMenu options={['Adidas', 'Footlocker']} searchable />
               <DropdownMenu
                 options={['Test 3 random proxies', 'Test all proxies']}
               />

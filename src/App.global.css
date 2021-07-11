@@ -23,7 +23,10 @@ textarea:focus,
 input:focus {
   outline: none;
 }
-
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
 body {
   position: relative;
   color: white;
@@ -71,12 +74,12 @@ body {
   background-color: rgba(0, 0, 0, 0);
 }
 .button-wrapper {
-  margin: 1rem 2rem;
+  margin: 0.5rem 2rem;
 }
 .button {
   text-transform: uppercase;
   background-color: white;
-  padding: 6px 15px;
+  padding: 5px 15px;
   border-radius: 3px;
   border: none;
   appearance: none;
@@ -92,6 +95,7 @@ body {
   );
   color: white;
   outline: none;
+  font-size: 0.9rem;
 }
 
 .button:hover {
@@ -99,8 +103,9 @@ body {
 }
 
 .button-heading {
-  padding: 10px 20px;
-  border-radius: 6px;
+  padding: 10px 22px;
+  border-radius: 5px;
+  font-weight: 500;
 }
 
 .button-secondary,
@@ -113,12 +118,12 @@ body {
 .heading-table-row {
   display: flex;
   justify-content: space-between;
-  border-radius: 5px;
+  border-radius: 7px;
   padding: 10px 20px;
-  font-size: 8px;
+  font-size: 0.6rem;
   background: #020e4a;
   color: #50608b;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .heading-table-column {
@@ -159,10 +164,9 @@ body {
 .select-input {
   background-color: #000f48;
   border: none;
-  color: #65708f;
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
+  color: #aab0c0;
+  font-size: 12px;
+  font-weight: 400;
 }
 
 .select-arrow {
@@ -176,11 +180,12 @@ body {
   cursor: pointer;
 }
 .select-option {
-  text-transform: uppercase;
   cursor: pointer;
-  font-size: 14px;
   margin-top: 4px;
   outline: none;
+  color: #aab0c0;
+  font-size: 12px;
+  font-weight: 400;
 }
 .select-option:hover {
   background-color: #07195f;
@@ -289,4 +294,43 @@ a:hover {
 
 .hide {
   display: none;
+}
+
+.navigation-container {
+  height: 5rem;
+  -webkit-app-region: drag;
+}
+
+.navigation-wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0.5rem 2rem;
+}
+
+.navigation-left-container {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-logo-wrapper {
+  width: 5rem;
+  height: 100%;
+  /* background-color: blue; */
+}
+
+.navigation-text-wrapper {
+  text-align: center;
+  /* background-color: red; */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navigation-text {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  color: white;
+  vertical-align: middle;
 }

@@ -12,6 +12,7 @@ import DropdownMenu from './components/DropdownMenu';
 import HeadingButton from './components/HeadingButton';
 import AddProxiesModal from './components/AddProxiesModal';
 import ProxyRow from './components/ProxyRow';
+import Navigation from './components/Navigation';
 import { Proxy } from './types';
 
 const Hello = () => {
@@ -26,6 +27,7 @@ const Hello = () => {
         toggleModal={toggleModal(false)}
         setProxies={setProxies}
       />
+      <Navigation />
       <div className="wrapper-main">
         <div className="button-wrapper">
           <HeadingButton

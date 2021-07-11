@@ -5,10 +5,9 @@ import { DropDownOption } from '../types';
 
 interface Props {
   options: DropDownOption[];
-  searchable?: boolean;
 }
 
-const DropdownMenu = ({ options, searchable }: Props) => {
+const DropdownMenuSearchable = ({ options }: Props) => {
   const [show, setShow] = useState(false);
   const [input, setInput] = useState<DropDownOption>(options[0]);
   // eslint-disable-next-line prettier/prettier
@@ -49,7 +48,7 @@ const DropdownMenu = ({ options, searchable }: Props) => {
       <div className="select">
         <div
           className="select-wrapper"
-          onClick={() => !searchable && toggleMenu()}
+          // onClick={() => !searchable && toggleMenu()}
           onKeyUp={() => {}}
           role="button"
           tabIndex={0}
@@ -102,8 +101,4 @@ const DropdownMenu = ({ options, searchable }: Props) => {
   );
 };
 
-DropdownMenu.defaultProps = {
-  searchable: false,
-};
-
-export default DropdownMenu;
+export default DropdownMenuSearchable;

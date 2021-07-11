@@ -64,7 +64,7 @@ const DropdownMenuSearchable = ({ options }: Props) => {
                   tabIndex={0}
                   role="menuitem"
                 >
-                  {searchable ? option.text : option.text.toUpperCase()}
+                  {option.text}
                 </div>
               ))}
             </div>
@@ -72,7 +72,6 @@ const DropdownMenuSearchable = ({ options }: Props) => {
           <input
             className="select-input"
             value={input.text}
-            disabled={!searchable}
             onChange={(e) => onInputChange(input, e)}
             onKeyUp={() => {}}
             tabIndex={0}

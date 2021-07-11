@@ -11,7 +11,7 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import path from 'path';
-import { app, BrowserWindow, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
@@ -74,6 +74,7 @@ const createWindow = async () => {
     icon: getAssetPath('icon.png'),
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: false,
     },
     frame: false,
   });
@@ -105,6 +106,13 @@ const createWindow = async () => {
   mainWindow.webContents.on('new-window', (event, url) => {
     event.preventDefault();
     shell.openExternal(url);
+  });
+
+  ipcMain.on('closeApp', () => {
+    mainWindow?.close();
+  });
+  ipcMain.on('minimizeApp', () => {
+    mainWindow?.minimize();
   });
 
   // Remove this if your app does not use auto updates

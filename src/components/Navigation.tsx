@@ -1,8 +1,19 @@
 import React, { ReactElement } from 'react';
-import { GrFormClose, GrSubtract } from 'react-icons/gr';
+import { RiCloseLine, RiSubtractLine } from 'react-icons/ri';
+
 import logo from '../../assets/icons/icon.png';
 
 export default function Navigation(): ReactElement {
+  const { ipcRenderer } = window.require('electron');
+  const ipc = ipcRenderer;
+
+  const closeWindow = () => {
+    ipc.send('closeApp');
+  };
+
+  const minimizeWindow = () => {
+    ipc.send('minimizeApp');
+  };
   return (
     <div className="navigation-container">
       <div className="navigation-wrapper">
@@ -15,11 +26,23 @@ export default function Navigation(): ReactElement {
           </div>
         </div>
         <div className="navigation-menu-wrapper">
-          <div className="navigation-menu-button">
-            <GrSubtract />
+          <div
+            className="navigation-menu-button"
+            onKeyDown={() => {}}
+            role="button"
+            tabIndex={0}
+            onClick={minimizeWindow}
+          >
+            <RiSubtractLine />
           </div>
-          <div className="navigation-menu-button">
-            <GrFormClose />
+          <div
+            className="navigation-menu-button"
+            onKeyDown={() => {}}
+            role="button"
+            tabIndex={0}
+            onClick={closeWindow}
+          >
+            <RiCloseLine />
           </div>
         </div>
       </div>

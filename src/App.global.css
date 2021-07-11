@@ -19,6 +19,11 @@ button,
 h6 {
   font-family: 'Poppins', sans-serif !important;
 }
+th,
+td {
+  border: 0;
+  padding: 0;
+}
 textarea:focus,
 input:focus {
   outline: none;
@@ -115,30 +120,62 @@ body {
   color: black;
 }
 
-.heading-table-row {
-  display: flex;
-  justify-content: space-between;
-  border-radius: 7px;
-  padding: 10px 20px;
-  font-size: 0.6rem;
-  background: #020e4a;
-  color: #50608b;
-  font-weight: 300;
+.proxy-table {
+  border: none;
+  border-collapse: collapse;
+  height: 400px;
+  overflow-y: scroll;
+  text-align: left;
 }
-
-.heading-table-column {
-  flex: 1;
-}
-
-.heading-bar {
+.proxy-table-head {
   background: linear-gradient(
     to right,
     rgba(23, 111, 254, 1) 0%,
     rgba(24, 173, 253, 1) 100%
   );
-  color: white;
+  border-radius: 5px;
+}
+.proxy-table-head-row:first-child .proxy-table-head-column:first-child {
+  border-radius: 7px 0 0 7px;
+}
+.proxy-table-head-row:last-child .proxy-table-head-column:last-child {
+  border-radius: 0 7px 7px 0;
 }
 
+.proxy-table-head-row {
+  font-size: 0.8em;
+  color: white;
+  font-weight: 300;
+}
+
+.proxy-table-body-column {
+  color: #aab0c0;
+  font-size: 12px;
+  font-weight: 400;
+}
+.proxy-column {
+  width: inherit;
+}
+
+.proxy-column div {
+  width: inherit;
+  padding: 0.5rem 1rem;
+}
+.proxy-column:first-child div {
+  border-radius: 7px 0 0 7px;
+}
+
+.proxy-column:last-child div {
+  border-radius: 0 7px 7px 0;
+}
+
+.proxy-table-body-column div {
+  background: #020e4a;
+  margin-bottom: 0.5rem;
+}
+.proxy-table-body-row:first-child .proxy-table-body-column div {
+  margin-top: 0.5rem;
+}
 .select-menu {
   display: none;
   position: relative;
@@ -296,6 +333,10 @@ a:hover {
   display: none;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .navigation-container {
   height: 5rem;
   -webkit-app-region: drag;
@@ -333,4 +374,20 @@ a:hover {
   font-size: 1.4rem;
   color: white;
   vertical-align: middle;
+}
+
+.navigation-menu-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.navigation-menu-button {
+  width: inherit;
+  height: auto;
+  margin-left: 1rem;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer !important;
+  -webkit-app-region: no-drag;
+  outline: none;
 }

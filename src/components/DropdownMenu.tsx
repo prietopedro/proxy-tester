@@ -5,10 +5,9 @@ import { DropDownOption } from '../types';
 
 interface Props {
   options: DropDownOption[];
-  searchable?: boolean;
 }
 
-const DropdownMenu = ({ options, searchable }: Props) => {
+const DropdownMenu = ({ options }: Props) => {
   const [show, setShow] = useState(false);
   const [input, setInput] = useState<DropDownOption>(options[0]);
   // eslint-disable-next-line prettier/prettier
@@ -49,7 +48,7 @@ const DropdownMenu = ({ options, searchable }: Props) => {
       <div className="select">
         <div
           className="select-wrapper"
-          onClick={() => !searchable && toggleMenu()}
+          onClick={() => toggleMenu()}
           onKeyUp={() => {}}
           role="button"
           tabIndex={0}
@@ -59,21 +58,21 @@ const DropdownMenu = ({ options, searchable }: Props) => {
               {filteredOptions.map((option: DropDownOption) => (
                 <div
                   key={option.value}
-                  className="select-option"
+                  className="select-option uppercase"
                   onClick={() => onOptionClick(option)}
                   onKeyUp={() => {}}
                   tabIndex={0}
                   role="menuitem"
                 >
-                  {searchable ? option.text : option.text.toUpperCase()}
+                  {option.text}
                 </div>
               ))}
             </div>
           </div>
           <input
-            className="select-input"
+            className="select-input uppercase"
             value={input.text}
-            disabled={!searchable}
+            disabled
             onChange={(e) => onInputChange(input, e)}
             onKeyUp={() => {}}
             tabIndex={0}
@@ -100,10 +99,6 @@ const DropdownMenu = ({ options, searchable }: Props) => {
       </div>
     </>
   );
-};
-
-DropdownMenu.defaultProps = {
-  searchable: false,
 };
 
 export default DropdownMenu;

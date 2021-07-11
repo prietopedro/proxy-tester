@@ -9,11 +9,12 @@ import {
   testProxySettings,
 } from './data';
 import DropdownMenu from './components/DropdownMenu';
+import DropdownMenuSearchable from './components/DropdownMenuSearchable';
 import HeadingButton from './components/HeadingButton';
 import AddProxiesModal from './components/AddProxiesModal';
-import ProxyRow from './components/ProxyRow';
 import Navigation from './components/Navigation';
 import { Proxy } from './types';
+import ProxyTable from './components/ProxyTable';
 
 const Hello = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,38 +38,11 @@ const Hello = () => {
           />
         </div>
         <div className="wrapper-inner">
-          <div className="heading-bar heading-table-row">
-            <div className="heading-table-column">
-              <h2>IP</h2>
-            </div>
-            <div className="heading-table-column">
-              <h2>PORT</h2>
-            </div>
-            <div className="heading-table-column">
-              <h2>USERNAME</h2>
-            </div>
-            <div className="heading-table-column">
-              <h2>PASSWORD</h2>
-            </div>
-            <div className="heading-table-column">
-              <h2>COUNTRY</h2>
-            </div>
-            <div className="heading-table-column">
-              <h2>ISP</h2>
-            </div>
-            <div className="heading-table-column">
-              <h2>SPEED</h2>
-            </div>
-          </div>
-          <div className="wrapper-inner-table">
-            {proxies.map((proxy: Proxy) => (
-              <ProxyRow proxy={proxy} key={`${proxy.ip}:${proxy.port}`} />
-            ))}
-          </div>
+          <ProxyTable proxies={proxies} />
           <div className="footer-bar">
             <div className="footer-test footer-child">
               <div className="footer-l">
-                <DropdownMenu options={sitesSettings} searchable />
+                <DropdownMenuSearchable options={sitesSettings} />
                 <DropdownMenu options={testProxySettings} />
                 <HeadingButton text="test" action={() => {}} />
               </div>
